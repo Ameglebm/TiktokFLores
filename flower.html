@@ -319,12 +319,27 @@
   </div>
 
   <!-- Início do áudio -->
-  <audio id="background-music" autoplay loop>
+  <audio id="background-music" loop>
     <source src="./flo.mp3" type="audio/mp3">
-    Audio nao suportado
+    Audio não suportado
   </audio>
   <!-- Fim do áudio -->
 
-  <script src="main.js"></script>
+  <!-- Botão para iniciar a música -->
+  <button id="play-music-button">Play Music</button>
+
+  <script>
+    document.getElementById('play-music-button').addEventListener('click', function() {
+      var audio = document.getElementById('background-music');
+      audio.play();
+      this.style.display = 'none'; // Oculta o botão após clicar
+    });
+
+    // Em dispositivos iOS, pode ser necessário dar foco ao documento para iniciar o áudio
+    document.addEventListener('DOMContentLoaded', function() {
+      var audio = document.getElementById('background-music');
+      audio.muted = false;
+    });
+  </script>
 </body>
 </html>
